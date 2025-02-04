@@ -27,9 +27,9 @@ def classify_number(request):
     num_str = request.GET.get('number')
 
     try:
-        num = int(num_str)  # Convert directly to int
-    except (TypeError, ValueError):  # Catch invalid inputs like "-" or "abc"
-        return JsonResponse({"number": num_str, "error": "Invalid number"}, status=status.HTTP_400_BAD_REQUEST)
+        num = int(num_str)  
+    except (TypeError, ValueError):  
+        return JsonResponse({"number": num_str, "error": True}, status=status.HTTP_400_BAD_REQUEST)
 
     properties = ['odd' if num % 2 else 'even']
     if is_armstrong(num):
